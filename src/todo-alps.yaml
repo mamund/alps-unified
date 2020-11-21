@@ -1,0 +1,59 @@
+######################################################
+# TODO .....: Application-Level Profile Semantics doc
+# Author ...: Mike Amundsen (@mamund)
+# Date .....: 2020-04-30
+######################################################
+
+alps:
+  version: '1.0'
+  doc:
+    value: 'Simple Todo list example'
+
+  # metadata
+  # - various service-related stuff
+  name: simpleTodo
+  id: http://alps.io/profiles/mamund/simpleTodo
+  root: http://api.example.org/todo
+  
+  descriptor:
+    # properties
+    # - these are the data elements
+    - id: id
+      type: semantic
+      text: storage id of todo item
+      
+    - id: body
+      type: semantic
+      text: content of todo item
+
+    # groupings
+    # - these are the storage objects
+    - id: todoItem
+      type: group
+      text: todo item
+      descriptor:
+      - href: '#id'
+      - href: '#body'
+
+    # actions
+    # - these are the operations
+    - id: todoList
+      type: safe
+      rt: todoItem
+      text: return list of todo items
+            
+    - id: todoAdd
+      type: unsafe
+      rt: todoItem
+      text: create a new todo item
+      descriptor:
+      - href: '#todoItem'
+      
+    - id: todoRemove
+      type: idempotent
+      tags: delete
+      rt: todoItem
+      text: remove a single todo item
+      descriptor:
+      - href: '#id'
+

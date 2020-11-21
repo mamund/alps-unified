@@ -1,0 +1,40 @@
+{
+  "name": "2020-04-unified",
+  "version": "1.0.0",
+  "description": "CLI utility for ALPS translations",
+  "main": "index.js",
+  "bin": {
+    "unified": "index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mamund/2020-11-unified.git"
+  },
+  "keywords": [
+    "mamund",
+    "ALPS",
+    "gRPC",
+    "REST",
+    "SDL",
+    "GraphQL",
+    "OpenAPI",
+    "AsyncAPI",
+    "WSDL"
+  ],
+  "author": "Mike Amundsen (@mamund)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mamund/2020-11-unified/issues"
+  },
+  "homepage": "https://github.com/mamund/2020-11-unified#readme",
+  "dependencies": {
+    "boxen": "^4.0.0",
+    "chalk": "^2.4.2",
+    "jstoxml": "^1.6.5",
+    "yamljs": "^0.3.0",
+    "yargs": "^13.2.4"
+  }
+}

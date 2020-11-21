@@ -1,0 +1,144 @@
+alps:
+  version: '1.0'
+  doc:
+    value: ALPS document for BigCo Company API
+  
+  ####################################
+  # metadata
+  ext:
+    - type: metadata
+      name: title
+      value: Company API
+      tags: 'oas'
+    - type: metadata
+      name: id
+      value: http://alps.io/profiles/mamund/company
+      tags: 'oas'
+    - type: metadata
+      name: root 
+      value: http://api.example.org/company
+      tags: 'oas'
+  
+  descriptor:
+    ##################################
+    # properties
+    - id: id
+      type: semantic
+
+    - id: status
+      type: semantic
+      text: 'suspended, pending, active, closed'
+
+    - id: legalName
+      type: semantic
+
+    - id: streetAddress
+      type: semantic
+
+    - id: locality
+      type: semantic
+
+    - id: addressRegion
+      type: semantic
+
+    - id: postalCode
+      type: semantic
+
+    - id: addressCountry
+      type: semantic
+
+    - id: telephone
+      type: semantic
+
+    - id: email
+      type: semantic
+
+    - id: dateCreated
+      type: semantic
+
+    - id: dateUpdated
+      type: semantic
+      
+    ################################
+    # groups
+    - id: company
+      type: group
+      text: company item
+      descriptor:
+        - href: '#id'
+        - href: '#status'
+        - href: '#legalName'
+        - href: '#streetAddress'
+        - href: '#locality'
+        - href: '#addressRegion'
+        - href: '#postalCode'
+        - href: '#accressCountry'
+        - href: '#telephone'
+        - href: '#email'
+        - href: '#dateCreated'
+        - href: '#dateUpdated'
+
+    ###############################
+    # actions
+    - id: home
+      type: safe
+      rt: '#company'
+  
+    - id: listCompanies
+      type: safe
+      rt: '#company'
+  
+    - id: filterCompanies
+      type: safe
+      rt: '#company'
+      descriptor:
+        - href: '#legalName'
+        - href: '#addressCountry'
+        - href: '#status'
+        - href: '#locality'
+  
+    - id: readCompany
+      type: safe
+      rt: '#company'
+      descriptor:
+        - href: '#id'
+  
+    - id: createCompany
+      type: unsafe
+      rt: '#company'
+      descriptor:
+        - href: '#id'
+        - href: '#status'
+        - href: '#legalName'
+        - href: '#streetAddress'
+        - href: '#locality'
+        - href: '#addressRegion'
+        - href: '#postalCode'
+        - href: '#telephone'
+        - href: '#email'
+  
+    - id: updateCompany
+      type: idempotent
+      tags: update
+      rt: '#company'
+      descriptor:
+        - href: '#id'
+        - href: '#status'
+        - href: '#legalName'
+        - href: '#streetAddress'
+        - href: '#locality'
+        - href: '#addressRegion'
+        - href: '#postalCode'
+        - href: '#telephone'
+        - href: '#email'
+  
+    - id: removeCompany
+      type: idempotent
+      tags: delete
+      rt: '#company'
+      descriptor:
+        - href: '#id'
+  
+###################################
+# EOF
+###################################
