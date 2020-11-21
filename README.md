@@ -46,7 +46,7 @@ Options:
   --version   Show version number                                      [boolean]
   -f, --file  Input file (alps.yaml)                         [string] [required]
   -t, --type  Format Type
-              ([j]son, [p]roto, [s]dl, [a]syncapi, [o]penapi)           [string]
+              ([j]son, [p]roto, [s]dl, [a]syncapi, [o]penapi, [w]sdl)   [string]
   -o, --out   Output file                                               [string]
 
 Missing required argument: f
