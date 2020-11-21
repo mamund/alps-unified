@@ -45,7 +45,7 @@ Usage: -f <alpsfile> -t <format type> -o <outfile>
 Options:
   --help      Show help                                                [boolean]
   --version   Show version number                                      [boolean]
-  -f, --file  Input file (alps.yaml)                         [string] [required]
+  -f, --file  Input file (alps.[yaml|JSON])                  [string] [required]
   -t, --type  Format Type
               ([j]son, [p]roto, [s]dl, [a]syncapi, [o]penapi, [w]sdl)   [string]
   -o, --out   Output file                                               [string]
