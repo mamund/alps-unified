@@ -13,6 +13,10 @@ alps:
   # - various service-related stuff
   ext:
     - type: metadata
+      name: name
+      value: 'todo'
+      tags: 'oas'
+    - type: metadata
       name: title
       value: ToDo API
       tags: 'oas'
