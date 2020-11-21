@@ -31,7 +31,7 @@ const options = yargs
     describe: "Input file (alps.yaml)", 
     type: "string", demandOption: true })
  .option("t", { alias: "type", 
-    describe: "Format Type \n([j]son, [p]roto, [s]dl, [a]syncapi, [o]penapi)",
+    describe: "Format Type \n([j]son, [p]roto, [s]dl, [a]syncapi, [o]penapi, [w]sdl)",
     type: "string", demandOption: false})
  .option("o", { alias: "out", 
     describe: "Output file", 
