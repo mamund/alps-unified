@@ -6,12 +6,13 @@
 // author:  @mamund
 // date:    2020-04
 //
-// desc:    translates ALPS.yaml into:
+// desc:    translates ALPS.[yaml\json] into:
 //          - ALPS.json
 //          - SDL
 //          - protobuf
 //          - openAPI
 //          - asyncAPI
+//          - WSDL
 //
 // notes    install as npm install -g .
 //          proof-of-concept utility (needs work)
@@ -47,13 +48,25 @@ var alps_document = {};
 var format = "json";
 var rtn = "";
 
-// convert YAML into JSON
+// **************************
+// read incoming file
+//
+// first, assume incoming file is YAML
 try {
   var file = `${process.cwd()}/${options.file}`;
   alps_document = YAML.load(file);
 } 
 catch(err) {
-  console.log(`ERROR: ${err}`);
+  // ok, assume incoming file is JSON
+  try {
+    var file = `${process.cwd()}/${options.file}`;
+    var doc = fs.readFileSync(file);
+    alps_document = JSON.parse(doc);
+  }
+  catch(err) {
+    // not JSON, either!
+    console.log(`ERROR: ${err}`);
+  }
 }
 
 // selection translation
@@ -63,9 +76,6 @@ try {
 catch {
   format = "json";
 }
-
-//console.log(alps_document.alps.ext.filter(oasMetadata));
-//return;
 
 // process requested translation
 switch (format) {
@@ -138,7 +148,12 @@ function toWSDL(doc) {
 // ****************************************************
 function toJSON(doc) {
   var rtn = ""; 
-  rtn = JSON.stringify(doc, null, 2);
+  try {
+    rtn = JSON.stringify(doc, null, 2);
+  }
+  catch(err) {
+    console.log(`ERROR: ${err}`);
+  }
   return rtn
 }
 
