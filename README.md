@@ -1,4 +1,4 @@
-# 2020-11-unified
+#  ALPS Unified
 
 Utility for converting ALPS API description documents (in YAML or JSON format) into target API definition documents (OpenAPI, SDL, Proto3, AnsyncAPI, WSDL). Also converts alps YAML into alps JSON.
 
