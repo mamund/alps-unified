@@ -10,10 +10,19 @@ alps:
     value: 'Simple Todo list example'
 
   # metadata
-  # - various service-related stuff
-  name: simpleTodo
-  id: http://alps.io/profiles/mamund/simpleTodo
-  root: http://api.example.org/todo
+  ext:
+    - type: metadata
+      name: title
+      value: simpleTodo
+      tags: 'oas'
+    - type: metadata
+      name: id
+      value: http://alps.io/profiles/mamund/simpleTodo
+      tags: 'oas'
+    - type: metadata
+      name: root 
+      value: http://api.example.org/todo
+      tags: 'oas'
   
   descriptor:
     # properties
