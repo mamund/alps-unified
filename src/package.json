@@ -1,5 +1,5 @@
 {
-  "name": "2020-04-unified",
+  "name": "alps-unified",
   "version": "1.0.0",
   "description": "CLI utility for ALPS translations",
   "main": "index.js",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mamund/2020-11-unified.git"
+    "url": "git+https://github.com/mamund/alps-unified.git"
   },
   "keywords": [
     "mamund",
@@ -27,9 +27,9 @@
   "author": "Mike Amundsen (@mamund)",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/mamund/2020-11-unified/issues"
+    "url": "https://github.com/mamund/alps-unified/issues"
   },
-  "homepage": "https://github.com/mamund/2020-11-unified#readme",
+  "homepage": "https://github.com/mamund/alps-unified#readme",
   "dependencies": {
     "boxen": "^4.0.0",
     "chalk": "^2.4.2",
