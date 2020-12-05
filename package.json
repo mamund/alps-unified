@@ -2,9 +2,9 @@
   "name": "alps-unified",
   "version": "1.0.0",
   "description": "CLI utility for ALPS translations",
-  "main": "index.js",
+  "main": "src/index.js",
   "bin": {
-    "unified": "index.js"
+    "unified": "src/index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

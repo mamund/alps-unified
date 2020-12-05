@@ -23,7 +23,6 @@ Options:
 ### INSTALL
 
  * Requires NodeJS
- * move to `/src/` folder to install
 
 ```
 npm install -g
