@@ -34,11 +34,11 @@ alps:
     # - these are the data elements
     - id: id
       type: semantic
-      text: storage id of todo item
+      title: storage id of todo item
       
     - id: body
       type: semantic
-      text: content of todo item
+      title: content of todo item
 
     # groupings
     # - these are the storage objects
@@ -54,12 +54,12 @@ alps:
     - id: todoList
       type: safe
       rt: todoItem
-      text: return list of todo items
+      title: return list of todo items
             
     - id: todoAdd
       type: unsafe
       rt: todoItem
-      text: create a new todo item
+      title: create a new todo item
       descriptor:
       - href: '#todoItem'
       
@@ -67,7 +67,7 @@ alps:
       type: idempotent
       tags: delete
       rt: todoItem
-      text: remove a single todo item
+      title: remove a single todo item
       descriptor:
       - href: '#id'
 
