@@ -4,7 +4,7 @@ Utility for converting ALPS API description documents (in YAML or JSON format) i
 
 
 **NOTE**
-> This utility is based on a presentation (and initial demo) here: http://2020-04-unified-api-design
+> This utility is based on a presentation (and initial demo) here: https://github.com/mamund/2020-04-unified-api-design
 
 ### USAGE
 
