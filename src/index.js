@@ -534,7 +534,7 @@ function toAsync(doc) {
 }
 
 //*******************************************
-// general support
+// general support routines
 //*******************************************
 
 function makePascalCase(value) {
