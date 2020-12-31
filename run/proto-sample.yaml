@@ -1,0 +1,89 @@
+alps:
+  version: "1.0"
+  name: microblogging
+  doc: "The example profile here contains details on customizing any representation media type for a specific \n    application domain: Micro-blogging. It contains descriptions of valid data and transition values that \n    can appear within resource representations. This document is presented as a complete blueprint for \n    implementing a compliant client or server that supports the basic features of the target application \n    domain (Micro-blogging)."
+  # metadata
+  ext:
+    - type: metadata
+      name: title
+      value: microblogging
+      tags: "oas"
+    - type: metadata
+      name: id
+      value: https://corntoole.github.io/api-profiles/microblogging
+      tags: "oas"
+    - type: metadata
+      name: root
+      value: http://api.example.org/microblogging
+      tags: "oas"
+  link:
+    rel: help
+    href: "http://amundsen.com/hypermedia/profiles/"
+  descriptor:
+    - doc: "Contains the UTC date-time the message was posted. When present, it SHOULD be valid per RFC3339."
+      id: "date-time"
+      type: semantic
+    - doc: "Contains the text description of a user."
+      id: description
+      type: semantic
+    - doc: ""
+      id: xx
+      type: semantic
+    - doc: "A list representation of unfiltered results."
+      id: all
+      type: semantic
+      descriptor:
+        - href: "#users"
+        - href: "#messages"
+    - id: friends
+      type: semantic
+      doc: "A list representation."
+      descriptor:
+        - href: "#users"
+        - href: "#messages"
+    - id: followers
+      type: semantic
+      doc: "A list representation of all the users from the designated user's friends list."
+      descriptor:
+        href: "#users"
+    - id: me
+      type: semantic
+      doc: "Contains the list of messages posted by the designated user or contains\n      the designated user's profile."
+      descriptor:
+        - href: "#users"
+        - href: "#messages"
+    - id: mentions
+      type: semantic
+      doc: "A list representation of all the messages that mention the designated user"
+      descriptor:
+        href: "#messages"
+    - id: message
+      type: semantic
+      doc: "A representation of a single message."
+      descriptor:
+        - href: "#user-text"
+        - href: "#user-link"
+        - href: "#message-text"
+        - href: "#message-link"
+        - href: "#user-image"
+        - href: "#date-time"
+    - id: empty
+    - doc: "A link template to add a new message to the system by the designated (logged-in) user."
+      descriptor:
+        - href: "#message-text"
+      rt: empty
+      id: "message-post"
+      type: unsafe
+    - doc: "A link template to reply to an existing message."
+      descriptor:
+        - doc: "the author of the post to be replied-to"
+          href: "#user-text"
+          name: user
+        - href: "#message-text"
+          name: message
+      id: "message-reply"
+      type: unsafe
+      rt: empty
+    # - doc: ""
+    #   id: xx
+    #   type: semantic

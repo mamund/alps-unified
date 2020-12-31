@@ -167,6 +167,7 @@ function toProto(doc) {
   var rtn = "";
   var obj;
   var coll;
+  var val;
 
   // preamble
   rtn += 'syntax = "proto3";\n';
@@ -185,10 +186,11 @@ function toProto(doc) {
   // params
   coll = doc.alps.descriptor.filter(semantic);
   coll.forEach(function(msg) {
-    rtn += `message ${msg.id}Params {\n`;
+    val = makeSnakeCase(msg.id);
+    rtn += `message ${val}_params {\n`;
     var c = 0;
     c++;
-    rtn += `  string ${msg.id} = ${c};\n`;    
+    rtn += `  string ${val} = ${c};\n`;    
     rtn += '}\n';
   });
   rtn += '\n';
@@ -196,54 +198,69 @@ function toProto(doc) {
   // objects
   coll = doc.alps.descriptor.filter(groups);
   coll.forEach(function(msg) {
-    rtn += `message ${msg.id} {\n`;
+    val = makeSnakeCase(msg.id);
+    rtn += `message ${val} {\n`;
     var c = 0;
     msg.descriptor.forEach(function(prop) {
       c++;
       rtn += `  string ${prop.href} = ${c};\n`;    
     });
     rtn += '}\n';
-    rtn += `message ${msg.id}Response {\n`;
-    rtn += `  repeated ${msg.id} ${msg.id}Collection = 1;\n`
+    rtn += `message ${val}_response {\n`;
+    rtn += `  repeated ${val} ${val}_collection = 1;\n`
     rtn += '}\n';
-    rtn += `message ${msg.id}Empty {}\n`;
+    rtn += `message ${val}_empty {}\n`;
   });
   rtn += '\n';
 
   // procedures
-  rtn += `service ${doc.alps.ext.filter(metadata_title)[0].value.replace(/ /g,'_')||"ALPS_API"}_Service {\n`;
+  val = doc.alps.ext.filter(metadata_title)[0].value.replace(/ /g,'-')||"ALPS-API";
+  val = makePascalCase(val)
+  rtn += `service ${val}Service {\n`;
   
   coll = doc.alps.descriptor.filter(safe);
   coll.forEach(function(item) {
-    rtn += `  rpc ${item.id}(`
+    val = item.id;
+    val = makePascalCase(val);
+    rtn += `  rpc ${val}(`
     if(item.descriptor) {
-      rtn += item.descriptor[0].href;      
+      val = makeSnakeCase(item.descriptor[0].href);
+      rtn += val;      
     }
     else {
-      rtn += `${item.rt}Empty`;
+      val = makeSnakeCase(item.rt);
+      rtn += `${val}_empty`;
     }
-    rtn += `) returns (${item.rt}Response) {};\n`;  
+    rtn += `) returns (${val}_response) {};\n`;  
   });
   
   coll = doc.alps.descriptor.filter(unsafe);
   coll.forEach(function(item) {
-    rtn += `  rpc ${item.id}(`
+    var val = item.id;
+    val = makePascalCase(val);
+    rtn += `  rpc ${val}(`
     if(item.descriptor) {
-      rtn += item.descriptor[0].href;      
+      val = makeSnakeCase(item.descriptor[0].href);
+      rtn += val;      
     }
-    rtn += `) returns (${item.rt}Response) {};\n`;  
+    val = makeSnakeCase(item.rt);
+    rtn += `) returns (${val}_response) {};\n`;  
   });
 
   coll = doc.alps.descriptor.filter(idempotent);
   coll.forEach(function(item) {
-    rtn += `  rpc ${item.id}(`
+    var val = item.id;
+    val = makePascalCase(val);
+    rtn += `  rpc ${val}(`
     if(item.descriptor) {
-      rtn += item.descriptor[0].href;
+      val = makeSnakeCase(item.descriptor[0].href);
+      rtn += val;      
       if(item.descriptor[0].href === "#id") {
-        rtn += "Params";
+        rtn += "_params";
       }      
     }
-    rtn += `) returns (${item.rt}Response) {};\n`;  
+    val = makeSnakeCase(item.rt);
+    rtn += `) returns (${val}_response) {};\n`;  
   });
   
   rtn += '}\n';
@@ -513,6 +530,40 @@ function toAsync(doc) {
   rtn = rtn.replace(rxHash,"");
   rtn = rtn.replace(rxQ,"#");
   
+  return rtn;
+}
+
+//*******************************************
+// general support
+//*******************************************
+
+function makePascalCase(value) {
+  var rtn = "";
+  var coll = [];
+  coll = value.split('-');
+  if(coll.length===0) {
+    coll = value.split('_');
+  }
+  if(coll.length===0) {
+    coll.push(rtn);
+  }
+  coll.forEach(function(item) {
+    rtn += item.charAt(0).toUpperCase() + item.slice(1)
+  });
+  return rtn;
+}
+
+function makeSnakeCase(value) {
+  var rtn = "";
+  var coll = [];
+  coll = value.split('-');
+  if(coll.length===0) {
+    coll.push(rtn);
+  }
+  coll.forEach(function(item) {
+    rtn += item.toLowerCase()+'_';
+  });
+  rtn = rtn.substring(0, rtn.length - 1);
   return rtn;
 }
 
