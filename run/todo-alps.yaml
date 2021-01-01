@@ -42,7 +42,7 @@ alps:
 
     # groupings
     # - these are the storage objects
-    - id: todoItem
+    - id: todo-Item
       type: group
       text: todo item
       descriptor:
@@ -51,22 +51,22 @@ alps:
 
     # actions
     # - these are the operations
-    - id: todoList
+    - id: todo-List
       type: safe
-      rt: todoItem
+      rt: todo-Item
       title: return list of todo items
             
-    - id: todoAdd
+    - id: todo-Add
       type: unsafe
-      rt: todoItem
+      rt: todo-Item
       title: create a new todo item
       descriptor:
-      - href: '#todoItem'
+      - href: '#todo-Item'
       
-    - id: todoRemove
+    - id: todo-Remove
       type: idempotent
       tags: delete
-      rt: todoItem
+      rt: todo-Item
       title: remove a single todo item
       descriptor:
       - href: '#id'
