@@ -167,7 +167,7 @@ function toProto(doc) {
   var rtn = "";
   var obj;
   var coll;
-  var val;
+  var val, val1, val2;
 
   // preamble
   rtn += 'syntax = "proto3";\n';
@@ -198,40 +198,41 @@ function toProto(doc) {
   // objects
   coll = doc.alps.descriptor.filter(groups);
   coll.forEach(function(msg) {
-    val = makePascalCase(msg.id);
-    rtn += `message ${val} {\n`;
+    val1 = makePascalCase(msg.id);
+    rtn += `message ${val1} {\n`;
     var c = 0;
     msg.descriptor.forEach(function(prop) {
       c++;
-      rtn += `  string ${prop.href} = ${c};\n`;    
+      val2 = makePascalCase(prop.href.slice(1));
+      rtn += `  string ${val2} = ${c};\n`;    
     });
     rtn += '}\n';
-    rtn += `message ${val}_response {\n`;
-    rtn += `  repeated ${val} ${val}_collection = 1;\n`
+    rtn += `message ${val1}_response {\n`;
+    rtn += `  repeated ${val1} ${val1}_collection = 1;\n`
     rtn += '}\n';
-    rtn += `message ${val}_empty {}\n`;
+    rtn += `message ${val1}_empty {}\n`;
   });
   rtn += '\n';
 
   // procedures
-  val = doc.alps.ext.filter(metadata_title)[0].value.replace(/ /g,'-')||"ALPS-API";
-  val = makePascalCase(val)
-  rtn += `service ${val}Service {\n`;
+  val1 = doc.alps.ext.filter(metadata_title)[0].value.replace(/ /g,'-')||"ALPS-API";
+  val1 = makePascalCase(val1)
+  rtn += `service ${val1}Service {\n`;
   
   coll = doc.alps.descriptor.filter(safe);
   coll.forEach(function(item) {
-    val = item.id;
-    val = makePascalCase(val);
-    rtn += `  rpc ${val}(`
+    val1 = item.id;
+    val1 = makePascalCase(val1);
+    rtn += `  rpc ${val1}(`
     if(item.descriptor) {
-      val = makeSnakeCase(item.descriptor[0].href);
-      rtn += val;      
+      val1 = makePascalCase(item.descriptor[0].href.slice(1));
+      rtn += val1;      
     }
     else {
-      val = makeSnakeCase(item.rt);
-      rtn += `${val}_empty`;
+      val1 = makePascalCase(item.rt);
+      rtn += `${val1}_empty`;
     }
-    rtn += `) returns (${val}_response) {};\n`;  
+    rtn += `) returns (${val1}_response) {};\n`;  
   });
   
   coll = doc.alps.descriptor.filter(unsafe);
@@ -240,10 +241,10 @@ function toProto(doc) {
     val = makePascalCase(val);
     rtn += `  rpc ${val}(`
     if(item.descriptor) {
-      val = makeSnakeCase(item.descriptor[0].href);
+      val = makePascalCase(item.descriptor[0].href.slice(1));
       rtn += val;      
     }
-    val = makeSnakeCase(item.rt);
+    val = makePascalCase(item.rt);
     rtn += `) returns (${val}_response) {};\n`;  
   });
 
@@ -253,13 +254,13 @@ function toProto(doc) {
     val = makePascalCase(val);
     rtn += `  rpc ${val}(`
     if(item.descriptor) {
-      val = makeSnakeCase(item.descriptor[0].href);
+      val = makePascalCase(item.descriptor[0].href.slice(1));
       rtn += val;      
       if(item.descriptor[0].href === "#id") {
         rtn += "_params";
       }      
     }
-    val = makeSnakeCase(item.rt);
+    val = makePascalCase(item.rt);
     rtn += `) returns (${val}_response) {};\n`;  
   });
   
@@ -296,7 +297,7 @@ function toSDL(doc) {
     val1 = makePascalCase(item.id);
     rtn += `type ${val1} {\n`;
     item.descriptor.forEach(function(prop) {
-      val1 = makeCamelCase(prop.href);
+      val1 = makePascalCase(prop.href);
       rtn += `  ${val1}: String!\n`;    
     });
     rtn += '}\n';
@@ -306,8 +307,8 @@ function toSDL(doc) {
   // query
   coll = doc.alps.descriptor.filter(safe);
   coll.forEach(function(item) {
-    val1 = makeCamelCase(item.id);
-    val2 = makeCamelCase(item.rt);  
+    val1 = makePascalCase(item.id);
+    val2 = makePascalCase(item.rt);  
     rtn += 'type Query {\n';
     rtn += `  ${val1}: [${val2}]\n`;
     rtn += '}\n';
@@ -318,10 +319,10 @@ function toSDL(doc) {
   rtn += 'type Mutation {\n';
   coll = doc.alps.descriptor.filter(unsafe);
   coll.forEach(function(item) {
-    val1 = makeCamelCase(item.id);
+    val1 = makePascalCase(item.id);
     rtn += `  ${val1}(`;
     if(item.descriptor) {
-      val1 = makeCamelCase(item.descriptor[0].href);
+      val1 = makePascalCase(item.descriptor[0].href);
       rtn += `${val1}: String!`;
     }  
     val1 = makeCamelCase(item.rt);
@@ -329,13 +330,13 @@ function toSDL(doc) {
   });                       
   coll = doc.alps.descriptor.filter(idempotent);
   coll.forEach(function(item) {
-    val1 = makeCamelCase(item.id);
+    val1 = makePascalCase(item.id);
     rtn += `  ${val1}(`;
     if(item.descriptor) {
-      val1 = makeCamelCase(item.descriptor[0].href);
+      val1 = makePascalCase(item.descriptor[0].href);
       rtn += `${val1}: String!`;
     }  
-    val1 = makeCamelCase(item.rt);
+    val1 = makePascalCase(item.rt);
     rtn += `): ${val1}\n`;  
   });                       
   rtn += '}\n';
@@ -556,7 +557,7 @@ function makePascalCase(value) {
     coll = value.split('_');
   }
   if(coll.length===0) {
-    coll.push(rtn);
+    coll.push(value);
   }
   coll.forEach(function(item) {
     rtn += item.charAt(0).toUpperCase() + item.slice(1).toLowerCase()
