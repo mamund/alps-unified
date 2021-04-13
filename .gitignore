@@ -43,3 +43,5 @@ Thumbs.db
 *.postman_environment.json
 *.env
 /dist/
+.project
+/.settings/
