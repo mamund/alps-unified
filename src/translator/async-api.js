@@ -13,18 +13,18 @@ module.exports = (doc, options) => {
     id: doc.alps.id,
     
     info: {
-      title: doc.alps.ext && doc.alps.ext.filter(metadata_title)[0].value||"ALPS API",
-      description: doc.alps.doc.value || `Generated from ALPS file ${options.file}`,
+      title: doc.alps.ext && doc.alps.ext.filter(metadata_title)[0].value || "ALPS API",
+      description: doc.alps.doc && doc.alps.doc.value || `Generated from ALPS file ${options.file}`,
       version: '1.0.0',
       baseTopic: doc.alps.ext && doc.alps.ext.filter(metadata_name)[0].value || "",
       host: doc.alps.ext && doc.alps.ext.filter(metadata_root)[0].value || "http://localhost:8888/root",
-      schemes: [ 'amqp', 'mqtt'],      
+      schemes: [ 'amqp', 'mqtt'],
     },
-    
-    topic: {
-      
-    },  
+
+//TODO    topic:
   };
+
+  return YAML.stringify(protobuf, 10, 2);
 
 //TODO signature
 //  rtn += '?? *******************************************************************\n';
@@ -33,8 +33,5 @@ module.exports = (doc, options) => {
 //  rtn += '\n';
 //  rtn += '?? http://github.com/mamund/2020-11-unified\n';
 //  rtn += '?? *******************************************************************\n';
-//  rtn += '\n';
-  
-  return YAML.stringify(protobuf, 5, 2);
-  
+//  rtn += '\n';  
 }
