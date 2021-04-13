@@ -176,20 +176,20 @@ module.exports = (doc, options) => {
       }
       
       item.descriptor.forEach(prop => {
-        console.log(item.id);
-        console.log(prop);
           schemas[item.id].properties[prop.href] = {
             type: 'string',
             example: prop.href, 
           }
       });
     });
-    
-  oas.components = { schemas: schemas };
+  
+  // if schemas are not empty
+  if (Object.keys(schemas).length > 0) {
+    oas.components = { schemas: schemas };
+  }
     
   return YAML.stringify(oas, 10, 2);
 }
-
   
 //TODO signature
 //  rtn += '?? *******************************************************************\n';
