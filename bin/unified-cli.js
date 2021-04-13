@@ -40,10 +40,6 @@ const options = yargs
     type: "string", demandOption: false})
  .argv;
 
-// cleanup regex
-const rxHash = /#/g;
-const rxQ = /\?\?/g;
-
 // init vars
 var alps_document = {};
 var format = "json";
