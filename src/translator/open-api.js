@@ -184,12 +184,14 @@ module.exports = (doc, options) => {
           }
       });
     });
-    
-  oas.components = { schemas: schemas };
+  
+  // if schemas are not empty
+  if (Object.keys(schemas).length > 0) {
+    oas.components = { schemas: schemas };
+  }
     
   return YAML.stringify(oas, 10, 2);
 }
-
   
 //TODO signature
 //  rtn += '?? *******************************************************************\n';
