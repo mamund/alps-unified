@@ -5,6 +5,9 @@ module.exports = {
   mode: 'production',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'alps-unified.js',
+    filename: 'unified.js',
   },
+ node: {
+  fs: 'empty',
+}
 };

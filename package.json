@@ -1,14 +1,14 @@
 {
   "name": "alps-unified",
-  "version": "2.0.0",
+  "version": "1.0.0",
   "description": "ALPS translator, API and CLI",
-  "main": "src/index.js",
+  "main": "dist/unified.js",
   "bin": {
     "unified": "bin/unified-cli.js"
   },
   "scripts": {
-    "build": "npm run build-webpack",
-    "build-webpack": "webpack",
+    "build": "webpack --mode production",
+    "prepublishOnly": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
