@@ -33,12 +33,13 @@
   },
   "homepage": "https://github.com/mamund/alps-unified#readme",
   "dependencies": {
-    "boxen": "^4.0.0",
-    "chalk": "^2.4.2",
+    "boxen": "^5.0.1",
+    "chalk": "^4.1.0",
     "esm": "^3.2.25",
-    "jstoxml": "^1.6.5",
+    "jstoxml": "^2.0.4",
     "yamljs": "^0.3.0",
-    "yargs": "^13.2.4"
+    "yargs": "^16.2.0",
+    "y18n": ">=4.0.1"
   },
   "engines": {
     "node": ">=12"
