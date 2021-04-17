@@ -38,6 +38,7 @@
     "decamelize": "^5.0.0",
     "escape-string-regexp": "^4.0.0",
     "esm": "^3.2.25",
+    "find-up": "^5.0.0",
     "jstoxml": "^2.0.4",
     "set-blocking": "^2.0.0",
     "term-size": "^2.2.1",

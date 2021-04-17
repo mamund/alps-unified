@@ -5,7 +5,7 @@
 
 const YAML = require('yamljs');
 
-const { groups, safe, unsafe, update, remove, metadata_title, metadata_root } = require('../util/alps-predicates')
+const { taxonomy, groups, safe, unsafe, update, remove, metadata_title, metadata_root } = require('../util/alps-predicates')
 
 module.exports = (doc, options) => {
 
@@ -14,7 +14,7 @@ module.exports = (doc, options) => {
 
     // info section    
     info: {
-      title: doc.alps.ext && doc.alps.ext.filter(metadata_title)[0].value || "ALPS API",
+      title: doc.alps.title || (doc.alps.ext && doc.alps.ext.filter(metadata_title)[0].value || "ALPS API"),
       description: doc.alps.doc && doc.alps.doc.value || `Generated from ALPS file ${options.file}`,
       version: '1.0.0',      
     },
@@ -164,7 +164,7 @@ module.exports = (doc, options) => {
   let schemas = {};
   
   doc.alps.descriptor
-    .filter(groups)
+    .filter(taxonomy)
     .forEach(item => {
       schemas[item.id] = {
         type: 'object',
