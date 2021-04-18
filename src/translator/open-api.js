@@ -6,6 +6,7 @@
 const YAML = require('yamljs');
 
 const { taxonomy, groups, safe, unsafe, update, remove, metadata_title, metadata_root } = require('../util/alps-predicates')
+const utils = require('../util/print-utils.js');
 
 module.exports = (doc, options) => {
 
@@ -178,7 +179,7 @@ module.exports = (doc, options) => {
       item.descriptor.forEach(prop => {
           schemas[item.id].properties[prop.href] = {
             type: 'string',
-            example: prop.href, 
+            example: utils.rString(prop.href), 
           }
       });
     });
@@ -187,8 +188,11 @@ module.exports = (doc, options) => {
   if (Object.keys(schemas).length > 0) {
     oas.components = { schemas: schemas };
   }
-    
-  return YAML.stringify(oas, 10, 2);
+
+  // cleanup output
+  var rtn = YAML.stringify(oas, 10, 2);
+  rtn = rtn.replace(utils.rxHash,"");
+  return rtn;
 }
   
 //TODO signature
