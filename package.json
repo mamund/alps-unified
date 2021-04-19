@@ -36,7 +36,7 @@
     "boxen": "^5.0.1",
     "chalk": "^4.1.0",
     "decamelize": "^5.0.0",
-    "escape-string-regexp": "^4.0.0",
+    "escape-string-regexp": "^5.0.0",
     "esm": "^3.2.25",
     "find-up": "^5.0.0",
     "jstoxml": "^2.0.4",
