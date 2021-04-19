@@ -11,7 +11,7 @@ const utils = require('../util/print-utils.js');
 module.exports = (doc, options) => {
 
   let oas = {
-    openapi: '3.0.1',
+    openapi: '3.0.2',
 
     // info section    
     info: {
@@ -33,7 +33,7 @@ module.exports = (doc, options) => {
   }
 
   // paths
-  doc.alps.descriptor
+  doc.alps.descriptor && doc.alps.descriptor
     .forEach(item => {
       
       let methods = {};
@@ -164,7 +164,7 @@ module.exports = (doc, options) => {
   // components
   let schemas = {};
   
-  doc.alps.descriptor
+  doc.alps.descriptor && doc.alps.descriptor
     .filter(taxonomy)
     .forEach(item => {
       schemas[item.id] = {
@@ -192,7 +192,11 @@ module.exports = (doc, options) => {
   // cleanup output
   var rtn = YAML.stringify(oas, 10, 2);
   rtn = rtn.replace(utils.rxHash,"");
-  rtn = header() + rtn;
+  
+  // do not print header if options.omitHeader is true
+  if (!options.omitHeader) {
+     rtn = header() + rtn;
+   }
   rtn = rtn.replace(utils.rxQ,"#");
   return rtn;
 }
