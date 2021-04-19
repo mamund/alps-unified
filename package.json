@@ -35,8 +35,13 @@
   "dependencies": {
     "boxen": "^5.0.1",
     "chalk": "^4.1.0",
+    "decamelize": "^5.0.0",
+    "escape-string-regexp": "^4.0.0",
     "esm": "^3.2.25",
+    "find-up": "^5.0.0",
     "jstoxml": "^2.0.4",
+    "set-blocking": "^2.0.0",
+    "term-size": "^2.2.1",
     "y18n": ">=4.0.1",
     "yamljs": "^0.3.0",
     "yargs": "^16.2.0"
@@ -46,7 +51,7 @@
   },
   "devDependencies": {
     "mocha": "^8.3.2",
-    "webpack": "^4.46.0",
+    "webpack": "^5.33.2",
     "webpack-cli": "^4.6.0"
   }
 }
