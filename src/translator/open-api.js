@@ -192,7 +192,11 @@ module.exports = (doc, options) => {
   // cleanup output
   var rtn = YAML.stringify(oas, 10, 2);
   rtn = rtn.replace(utils.rxHash,"");
-  rtn = header() + rtn;
+  
+  // do not print header if options.omitHeader is true
+  if (!options.omitHeader) {
+     rtn = header() + rtn;
+   }
   rtn = rtn.replace(utils.rxQ,"#");
   return rtn;
 }

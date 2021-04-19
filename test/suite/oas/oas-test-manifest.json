@@ -1,6 +1,6 @@
 [
   {
-    "name": "oas.info.title from root alps.doc",
+    "name": "oas.info.title from alps.title",
     "input": "test-1.json",
     "expected": "test-1.yml"
   }

@@ -35,7 +35,7 @@ describe('toOAS()', function() {
 
     it(testCase.name, () => {
       
-      const output = unified.toOAS(input, {});
+      const output = unified.toOAS(input, { omitHeader: true});
 
       assert.strictEqual(output, expected);
     });
