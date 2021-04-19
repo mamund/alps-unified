@@ -9,7 +9,7 @@
   "scripts": {
     "build": "webpack --mode production",
     "prepublishOnly": "npm run build",
-    "test": "mocha"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -50,7 +50,6 @@
     "node": ">=12"
   },
   "devDependencies": {
-    "mocha": "^8.3.2",
     "webpack": "^5.33.2",
     "webpack-cli": "^4.6.0"
   }
