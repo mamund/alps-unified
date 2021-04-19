@@ -10,7 +10,7 @@ const { groups, safe, unsafe, update, remove, metadata_title, metadata_root } = 
 module.exports = (doc, options) => {
 
   let oas = {
-    openapi: '3.0.1',
+    openapi: '3.0.2',
 
     // info section    
     info: {
@@ -32,7 +32,7 @@ module.exports = (doc, options) => {
   }
 
   // paths
-  doc.alps.descriptor
+  doc.alps.descriptor && doc.alps.descriptor
     .forEach(item => {
       
       let methods = {};
@@ -163,7 +163,7 @@ module.exports = (doc, options) => {
   // components
   let schemas = {};
   
-  doc.alps.descriptor
+  doc.alps.descriptor && doc.alps.descriptor
     .filter(groups)
     .forEach(item => {
       schemas[item.id] = {
