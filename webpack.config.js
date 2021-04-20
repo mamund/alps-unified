@@ -11,7 +11,9 @@ module.exports = {
     umdNamedDefine: true,
     globalObject: `(typeof self !== 'undefined' ? self : this)`
   },
-  node: {
-    fs: 'empty',
+  resolve: {
+    fallback: {
+      fs: false
+    }
   }
 };
