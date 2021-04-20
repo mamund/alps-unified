@@ -4,7 +4,7 @@ const assert = require('assert');
 const fs = require('fs');
 const path = require('path');
 
-const unified = require('../src/translator');
+const unified = require('../dist/unified');
 
 const suite = require('./suite/oas/oas-test-manifest');
 
