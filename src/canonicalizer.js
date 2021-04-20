@@ -24,7 +24,7 @@ const normalizeDsc = dsc => Object.assign(dsc,
             descriptor: assureArray(dsc.descriptor).map(normalizeDsc),
             link: assureArray(dsc.link),
             ext: assureArray(dsc.ext),
-            type: dsc.type || 'semantic'
+            type: dsc.type || 'semantic',
           });
 
 const canonicalizer = doc => !doc.alps ? {} : Object.assign(doc.alps, 
