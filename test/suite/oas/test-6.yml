@@ -1,0 +1,18 @@
+openapi: 3.0.2
+info:
+  title: 'Generated OAS from ALPS'
+  version: 0.0.1
+paths:
+  /test6:
+    get:
+      summary: test6
+      operationId: test6
+      responses:
+        '200':
+          description: test6
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/result'

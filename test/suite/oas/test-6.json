@@ -1,0 +1,14 @@
+{
+  "alps": {
+    "descriptor": [
+      {
+        "return": "#result",
+        "id": "test6",
+        "type": "safe"
+      },
+      {
+        "id": "result"
+      }
+    ]
+  }
+}

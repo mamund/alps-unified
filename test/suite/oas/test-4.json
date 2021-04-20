@@ -1,0 +1,14 @@
+{
+  "alps": {
+    "doc": [{
+      "value": "Test #4 text/html description",
+      "contentType": "text/html"      
+
+    },
+    { "value": "Test #4 text/plain description longer than 40 characters",
+          "contentType": "text/plain"},
+    { "value": "Test #4 text/plain description",
+          "contentType": "text/plain"}
+    ]
+  }
+}
