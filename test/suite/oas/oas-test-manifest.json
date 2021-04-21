@@ -1,7 +1,32 @@
 [
   {
-    "name": "oas.info.title from alps.title",
+    "name": "info.title from alps.title",
     "input": "test-1.json",
     "expected": "test-1.yml"
-  }
+  },
+  {
+    "name": "an empty ALPS document",
+    "input": "test-2.json",
+    "expected": "test-2.yml"
+  },  
+  {
+    "name": "info.title from string doc shorter than 40 characters",
+    "input": "test-3.json",
+    "expected": "test-3.yml"
+  },
+  {
+    "name": "info from first doc[text/plain] shorter than 40 characters",
+    "input": "test-4.json",
+    "expected": "test-4.yml"
+  },
+  {
+    "name": "servers from link[rel=server]",
+    "input": "test-5.json",
+    "expected": "test-5.yml"
+  },
+  {
+    "name": "fragment as descriptor return type",
+    "input": "test-6.json",
+    "expected": "test-6.yml"
+  }  
 ]

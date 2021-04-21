@@ -1,0 +1,10 @@
+{
+  "alps": {
+    "link": [
+      {
+        "rel": "server",
+        "href": "https://eiger.apicatalog.com"
+      }
+    ]
+  }
+}

@@ -1,0 +1,5 @@
+openapi: 3.0.2
+info:
+  title: 'Test #4 text/plain description'
+  version: 0.0.1
+  description: 'Test #4 text/plain description longer than 40 characters'
