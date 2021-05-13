@@ -50,7 +50,7 @@
     "node": ">=12"
   },
   "devDependencies": {
-    "@babel/core": "^7.14.0",
+    "@babel/core": "^7.14.2",
     "@babel/preset-env": "^7.14.1",
     "babel-loader": "^8.2.2",
     "mocha": "^8.4.0",
