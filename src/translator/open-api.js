@@ -48,9 +48,10 @@ const info = (oas, doc) => {
 
   let info = {};
 
+  // hack to get unified to build/run : remove ?.value from lines 53 & 54 : @mamund
   info.title = doc.title // from title
-      || doc.ext.find(e => metadata_title(e) && e.value)?.value  // from extensions
-      || doc.doc.find(d => d.contentType === 'text/plain' && d.value && d.value.length <= 40)?.value   // from doc
+      || doc.ext.find(e => metadata_title(e) && e.value) //?.value  // from extensions
+      || doc.doc.find(d => d.contentType === 'text/plain' && d.value && d.value.length <= 40) //?.value   // from doc
       || 'Generated OAS from ALPS'
       ;
 
