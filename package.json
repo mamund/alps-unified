@@ -41,7 +41,7 @@
     "find-up": "^5.0.0",
     "jstoxml": "^2.2.0",
     "set-blocking": "^2.0.0",
-    "term-size": "^2.2.1",
+    "term-size": "^3.0.0",
     "y18n": ">=4.0.1",
     "yamljs": "^0.3.0",
     "yargs": "^17.1.1"
