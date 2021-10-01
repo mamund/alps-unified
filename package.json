@@ -35,7 +35,7 @@
   "dependencies": {
     "boxen": "^6.0.0",
     "chalk": "^4.1.2",
-    "decamelize": "^5.0.1",
+    "decamelize": "^6.0.0",
     "escape-string-regexp": "^5.0.0",
     "esm": "^3.2.25",
     "find-up": "^6.1.0",
