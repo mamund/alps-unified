@@ -47,7 +47,7 @@
     "yargs": "^17.6.0"
   },
   "engines": {
-    "node": ">=12"
+    "node": ">=14"
   },
   "devDependencies": {
     "@babel/core": "^7.19.6",
