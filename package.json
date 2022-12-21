@@ -33,7 +33,7 @@
   },
   "homepage": "https://github.com/mamund/alps-unified#readme",
   "dependencies": {
-    "boxen": "^7.0.0",
+    "boxen": "^7.0.1",
     "chalk": "^5.2.0",
     "decamelize": "^6.0.0",
     "escape-string-regexp": "^5.0.0",
