@@ -39,7 +39,7 @@
     "escape-string-regexp": "^5.0.0",
     "esm": "^3.2.25",
     "find-up": "^7.0.0",
-    "jstoxml": "^5.0.0",
+    "jstoxml": "^5.0.1",
     "set-blocking": "^2.0.0",
     "term-size": "^4.0.0",
     "y18n": ">=4.0.1",
