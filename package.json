@@ -54,7 +54,7 @@
     "@babel/preset-env": "^7.27.2",
     "babel-loader": "^10.0.0",
     "mocha": "^11.7.1",
-    "webpack": "^5.101.0",
+    "webpack": "^5.101.1",
     "webpack-cli": "^6.0.1"
   }
 }
